@@ -132,7 +132,16 @@ body {
   background: linear-gradient(90deg, rgba(91, 122, 176, 0.5), transparent);
   animation: shoot 7s linear infinite;
 }
-
+/* efek "ditekan" untuk semua tombol & link */
+button,
+a[href] {
+  -webkit-tap-highlight-color: transparent;
+}
+button:not(:disabled):active,
+a[href]:active {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }

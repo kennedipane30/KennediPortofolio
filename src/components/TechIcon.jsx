@@ -1,7 +1,7 @@
 import {
   SiGo, SiPhp, SiLaravel, SiFlutter, SiDart, SiHtml5, SiCss, SiTailwindcss, SiJavascript,
   SiReact, SiC, SiPython, SiPostgresql, SiMysql, SiXampp, SiFigma, SiGit, SiGithub,
-  SiBootstrap, SiScikitlearn,
+  SiBootstrap, SiScikitlearn, SiLaragon,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 import { TbChartBar, TbChartPie, TbCode, TbDatabase } from "react-icons/tb";
@@ -24,6 +24,7 @@ export const TECH = {
   PostgreSQL: [SiPostgresql, "#4169E1"],
   MySQL: [SiMysql, "#00758F"],
   XAMPP: [SiXampp, "#FB7A24"],
+  Laragon: [SiLaragon, "#0E83CD"],
   Figma: [SiFigma, "#F24E1E"],
   Git: [SiGit, "#F05032"],
   GitHub: [SiGithub, "#181717"],

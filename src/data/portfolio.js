@@ -6,6 +6,9 @@
 //  Kalau dikosongkan (""), otomatis tampil gambar placeholder.
 // ============================================================
 
+// Teknologi andalan (diberi label "Main Stack" di tab Tech Stack)
+export const mainStack = ["Golang", "Laravel", "Flutter", "PostgreSQL"];
+
 export const profile = {
   name: "Kennedi Pane",
   shortName: "Kennedi",
@@ -163,36 +166,6 @@ export const projects = [
       "WHO growth standard calculation (Permenkes No. 2/2020)",
     ],
   },
-  {
-    slug: "sistem-informasi-desa",
-    title: "Village Information System",
-    short: "A village profile and services website for information, news, and resident data.",
-    description:
-      "A web-based village information system that presents the village profile, news, gallery, and administrative services. Admins manage content and resident data through a dashboard. (Dummy description — replace with real details.)",
-    image: "",
-    accent: "#5b7ab0",
-    tech: ["Laravel", "PHP", "Bootstrap", "MySQL"],
-    role: "Frontend & Database",
-    year: "2025",
-    demo: "#",
-    repo: "#",
-    features: ["Village profile & news", "Admin dashboard", "Resident data management", "Activity gallery"],
-  },
-  {
-    slug: "game-edukasi-lokal",
-    title: "Local Educational Game",
-    short: "An educational game featuring local culture for fun, engaging learning.",
-    description:
-      "An educational game that uses local cultural content as an interactive learning medium, developed as part of a lecturer's grant-funded research. (Dummy description.)",
-    image: "",
-    accent: "#829cc1",
-    tech: ["Python", "Figma", "UI/UX"],
-    role: "Research Assistant",
-    year: "2026",
-    demo: "#",
-    repo: "#",
-    features: ["Local cultural content", "Interactive quizzes", "Scoring system", "Child-friendly design"],
-  },
 ];
 
 // SERTIFIKAT
@@ -236,11 +209,39 @@ export const achievements = [
   },
 ];
 
+// TECH STACK dikelompokkan per kategori
 // key icon: lihat daftar di src/components/TechIcon.jsx
 export const techStack = [
-  "Golang", "PHP", "Laravel", "Flutter", "Dart", "HTML", "CSS", "Tailwind CSS",
-  "JavaScript", "React", "Java", "C", "Python", "PostgreSQL", "MySQL", "XAMPP",
-  "Figma", "Git", "GitHub", "Power BI", "Tableau", "Bootstrap", "Oracle", "Machine Learning",
+  {
+    category: "Backend",
+    icon: "backend",
+    desc: "Building APIs, services, and business logic.",
+    items: ["Golang", "PHP", "Laravel", "Java", "C"],
+  },
+  {
+    category: "Web & Mobile",
+    icon: "web",
+    desc: "Crafting responsive interfaces and cross-platform apps.",
+    items: ["HTML", "CSS", "Tailwind CSS", "JavaScript", "React", "Bootstrap", "Flutter", "Dart"],
+  },
+  {
+    category: "Database",
+    icon: "database",
+    desc: "Designing and managing reliable data storage.",
+    items: ["PostgreSQL", "MySQL", "Laragon"],
+  },
+  {
+    category: "Data Analysis",
+    icon: "data",
+    desc: "Turning raw data into insights and smart models.",
+    items: ["Python", "Machine Learning", "Power BI", "Tableau"],
+  },
+  {
+    category: "Tools & Design",
+    icon: "tools",
+    desc: "Collaborating, versioning, and designing the experience.",
+    items: ["Git", "GitHub", "Figma", "XAMPP"],
+  },
 ];
 
 // Komentar awal yang tampil di kolom komentar
