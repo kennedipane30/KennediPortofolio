@@ -101,7 +101,7 @@ export const projects = [
     description:
       "Web and mobile tutoring platform for Spekta Academy Balige. Admins and teachers work through a web portal, while students learn through a mobile app. Built as a team with a microservice architecture, so every student activity, from learning materials to tryout scores, is recorded in detail.",
     image: "/images/project-spekta.png",
-        accent: "#5b7ab0",
+    accent: "#5b7ab0",
     // tag peran (tampil huruf besar)
     tags: ["Backend Development", "Microservices", "Web & Mobile App"],
     // baris tech stack
@@ -129,6 +129,41 @@ export const projects = [
     ],
   },
   {
+    slug: "posyandu-care",
+    title: "PosyanduCare – Offline-First Posyandu Information System",
+    short:
+      "Mobile application for monitoring toddler growth and development at Posyandu Silimbat, Sitoluama, and Aek Bolon, with role-based access for secretaries, health cadres, midwives, and parents.",
+    description:
+      "Mobile application for monitoring toddler growth and development at Posyandu Silimbat, Sitoluama, and Aek Bolon, with role-based access for secretaries, health cadres, midwives, and parents. Built as a team for our final project. Parents register and check in with a QR code, cadres record measurements, and midwives log immunizations based on the Indonesian Ministry of Health schedule. Nutritional status is calculated automatically using WHO growth standards (Permenkes No. 2/2020).",
+    image: "/images/project-posyandu.png", // simpan gambar di public/images/project-posyandu.png
+    accent: "#4a6699",
+    tags: ["Backend Development", "Mobile App", "Offline-First"],
+    stack: [
+      { label: "Languages", items: ["Go", "Dart"] },
+      { label: "Frameworks", items: ["Gin", "GORM", "Flutter"] },
+      { label: "Database", items: ["PostgreSQL"] },
+      { label: "Services", items: ["Firebase Cloud Messaging"] },
+    ],
+    highlight: {
+      label: "Final Project (Tugas Akhir)",
+      title: "PosyanduCare",
+      text: "Built as a team for our final project. Parents register and check in with a QR code, cadres record measurements, and midwives log immunizations based on the Indonesian Ministry of Health schedule. Nutritional status is calculated automatically using WHO growth standards (Permenkes No. 2/2020).",
+    },
+    tech: ["Golang", "Flutter", "Dart", "PostgreSQL", "Firebase"],
+    role: "Backend & Mobile Developer",
+    year: "2026",
+    demo: "#",
+    repo: "#",
+    features: [
+      "Secretary: schedules, staff accounts, posyandu QR, immunization recap",
+      "Cadre: check-in, queue, weight, height, head & arm circumference",
+      "Midwife: examinations, vaccines, supplements, nutritional status",
+      "Parent mobile app: registration & queue, growth charts, vaccine history",
+      "Offline-first data with automatic sync",
+      "WHO growth standard calculation (Permenkes No. 2/2020)",
+    ],
+  },
+  {
     slug: "sistem-informasi-desa",
     title: "Village Information System",
     short: "A village profile and services website for information, news, and resident data.",
@@ -142,21 +177,6 @@ export const projects = [
     demo: "#",
     repo: "#",
     features: ["Village profile & news", "Admin dashboard", "Resident data management", "Activity gallery"],
-  },
-  {
-    slug: "sistem-informasi-posyandu",
-    title: "Posyandu Information System",
-    short: "An offline-first posyandu app for recording child health data and activity schedules.",
-    description:
-      "An offline-first mobile app for posyandu health workers: child growth tracking, immunization schedules, and data sync when back online. REST API backend built with Golang. (Dummy description.)",
-    image: "",
-    accent: "#4a6699",
-    tech: ["Flutter", "Dart", "Golang", "PostgreSQL"],
-    role: "Fullstack",
-    year: "2026",
-    demo: "#",
-    repo: "#",
-    features: ["Role-based login", "Offline mode", "Data synchronization", "Growth charts"],
   },
   {
     slug: "game-edukasi-lokal",

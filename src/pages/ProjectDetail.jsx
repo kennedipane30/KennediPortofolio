@@ -1,4 +1,4 @@
-import { FiArrowLeft, FiExternalLink, FiGithub, FiCheckCircle, FiUser, FiCalendar } from "react-icons/fi";
+import { FiArrowLeft, FiGithub, FiCheckCircle, FiUser, FiCalendar } from "react-icons/fi";
 import TechIcon from "../components/TechIcon";
 import { ProjectThumb } from "../components/Placeholders";
 import { goHome } from "../hooks/useHashRoute";
@@ -26,9 +26,9 @@ export default function ProjectDetail({ slug }) {
         <div className="fade-up flex items-center gap-3 text-sm">
           <button
             onClick={() => goHome("portfolio")}
-            className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-700 transition hover:bg-slate-50"
+            className="group inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 font-semibold text-slate-700 transition duration-300 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md hover:shadow-blue-900/10"
           >
-            <FiArrowLeft /> Back
+            <FiArrowLeft className="transition duration-300 group-hover:-translate-x-1" /> Back
           </button>
           <span className="text-slate-400">Projects</span>
           <span className="text-slate-300">›</span>
@@ -54,8 +54,14 @@ export default function ProjectDetail({ slug }) {
             </h2>
             <div className="mt-3 flex flex-wrap gap-2">
               {p.tech.map((t) => (
-                <span key={t} className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700">
-                  <TechIcon name={t} size={14} /> {t}
+                <span
+                  key={t}
+                  className="group inline-flex cursor-default items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 transition duration-300 hover:-translate-y-1 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 hover:shadow-md hover:shadow-blue-900/10"
+                >
+                  <span className="transition duration-300 group-hover:scale-125 group-hover:rotate-12">
+                    <TechIcon name={t} size={14} />
+                  </span>
+                  {t}
                 </span>
               ))}
             </div>
@@ -65,26 +71,27 @@ export default function ProjectDetail({ slug }) {
             </h2>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
               {p.features.map((f) => (
-                <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
-                  <FiCheckCircle className="shrink-0 text-emerald-500" /> {f}
+                <li key={f} className="group flex items-center gap-2 text-sm text-slate-600 transition duration-300 hover:translate-x-1 hover:text-slate-900">
+                  <FiCheckCircle className="shrink-0 text-emerald-500 transition duration-300 group-hover:scale-125" /> {f}
                 </li>
               ))}
             </ul>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href={p.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 hover:bg-blue-700">
-                Live Demo <FiExternalLink />
-              </a>
-              <a href={p.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50">
-                <FiGithub /> Source Code
+              <a href={p.repo} target="_blank" rel="noreferrer" className="group inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-800 transition duration-300 hover:-translate-y-1 hover:border-slate-900 hover:bg-slate-900 hover:text-white hover:shadow-lg hover:shadow-slate-900/20">
+                <FiGithub className="transition duration-300 group-hover:rotate-12" /> Source Code
               </a>
             </div>
           </div>
 
           <div className="fade-up overflow-hidden rounded-2xl border border-slate-200 bg-white p-2 shadow-xl shadow-blue-900/10" style={{ animationDelay: "120ms" }}>
-            <div className="aspect-[16/10] overflow-hidden rounded-xl">
-              <ProjectThumb project={p} />
-            </div>
+            {p.image ? (
+              <img src={p.image} alt={p.title} className="block h-auto w-full rounded-xl" />
+            ) : (
+              <div className="aspect-[16/10] overflow-hidden rounded-xl">
+                <ProjectThumb project={p} />
+              </div>
+            )}
           </div>
         </div>
 
@@ -93,8 +100,12 @@ export default function ProjectDetail({ slug }) {
           <div className="grid gap-4 sm:grid-cols-3">
             {others.map((o) => (
               <a key={o.slug} href={`#/project/${o.slug}`} className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:shadow-lg">
-                <div className="aspect-[16/9] overflow-hidden">
-                  <ProjectThumb project={o} />
+                <div className="aspect-[2/1] overflow-hidden bg-slate-50">
+                  {o.image ? (
+                    <img src={o.image} alt={o.title} loading="lazy" className="h-full w-full object-contain" />
+                  ) : (
+                    <ProjectThumb project={o} />
+                  )}
                 </div>
                 <div className="p-4 font-bold text-slate-900 group-hover:text-blue-600">{o.title}</div>
               </a>

@@ -13,6 +13,15 @@ const TABS = [
   { id: "tech", label: "Tech Stack", icon: FiLayers },
 ];
 
+// Urutan project paling atas (berdasarkan slug di data/portfolio.js)
+const PINNED = ["posyandu-care", "spekta-academy"];
+
+const orderedProjects = [...projects].sort((a, b) => {
+  const ia = PINNED.indexOf(a.slug);
+  const ib = PINNED.indexOf(b.slug);
+  return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+});
+
 // Card project lebar: kiri = info, kanan = gambar + highlight
 function ProjectCard({ p, i }) {
   const tags = p.tags?.length ? p.tags : [p.role];
@@ -175,7 +184,7 @@ export default function Portfolio() {
         <div key={tab} className="min-h-[300px]">
           {tab === "projects" && (
             <div className="grid gap-6">
-              {projects.map((p, i) => (
+              {orderedProjects.map((p, i) => (
                 <ProjectCard key={p.slug} p={p} i={i} />
               ))}
             </div>
