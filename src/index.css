@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Palet warna: AZURE #829cc1 + CORNFLOWER #5b7ab0
+     (menggantikan warna "blue", "sky", "indigo" bawaan Tailwind) */
+  --color-blue-50: #f1f5fb;
+  --color-blue-100: #e2eaf5;
+  --color-blue-200: #c8d6ec;
+  --color-blue-300: #a6bcdd;
+  --color-blue-400: #829cc1; /* azure */
+  --color-blue-500: #6a88bb;
+  --color-blue-600: #5b7ab0; /* cornflower */
+  --color-blue-700: #4a6699;
+  --color-blue-800: #3b527c;
+  --color-blue-900: #2c3e5f;
+  --color-sky-100: #e6edf7;
+  --color-sky-300: #b4c7e0;
+  --color-sky-400: #829cc1;
+  --color-sky-500: #7590b8;
+  --color-indigo-200: #c8d6ec;
+  --color-indigo-500: #5b7ab0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #f3f6fb;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #c8d6ec;
+}
+
+/* latar titik-titik + cahaya lembut */
+.bg-scene {
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(130, 156, 193, 0.28), transparent 40%),
+    radial-gradient(circle at 85% 30%, rgba(91, 122, 176, 0.18), transparent 38%),
+    radial-gradient(circle at 50% 90%, rgba(130, 156, 193, 0.2), transparent 45%),
+    radial-gradient(rgba(59, 82, 124, 0.09) 1px, transparent 1px);
+  background-size: auto, auto, auto, 22px 22px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #4a6699, #829cc1 55%, #5b7ab0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* animasi muncul saat discroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: #5b7ab0;
+  margin-left: 3px;
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.floaty { animation: floaty 7s ease-in-out infinite; }
+
+@keyframes eq {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.eq span {
+  display: inline-block;
+  width: 3px;
+  margin: 0 1px;
+  height: 12px;
+  background: #5b7ab0;
+  border-radius: 2px;
+  transform-origin: bottom;
+  animation: eq 0.9s ease-in-out infinite;
+}
+.eq span:nth-child(2) { animation-delay: 0.2s; }
+.eq span:nth-child(3) { animation-delay: 0.4s; }
+.eq.paused span { animation-play-state: paused; }
+
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 8s linear infinite; }
+.spin-slow.paused { animation-play-state: paused; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-up { animation: fade-up 0.5s ease both; }
+
+/* garis bintang jatuh versi terang */
+@keyframes shoot {
+  0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(-60vw, 42vw) rotate(-35deg); opacity: 0; }
+}
+.shoot {
+  position: absolute;
+  width: 140px;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(91, 122, 176, 0.5), transparent);
+  animation: shoot 7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
