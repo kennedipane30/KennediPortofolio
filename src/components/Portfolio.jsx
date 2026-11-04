@@ -13,30 +13,62 @@ const TABS = [
   { id: "tech", label: "Tech Stack", icon: FiLayers },
 ];
 
+// Card project lebar: kiri = info, kanan = gambar + highlight
 function ProjectCard({ p, i }) {
+  const tags = p.tags?.length ? p.tags : [p.role];
+  const stack = p.stack?.length ? p.stack : [{ label: "Tech", items: p.tech }];
+  const hl = p.highlight || { label: p.year, title: p.title, text: p.short };
+
   return (
-    <div className="fade-up group flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5" style={{ animationDelay: `${i * 70}ms` }}>
-      <div className="aspect-[16/10] overflow-hidden border-b border-slate-100">
-        <div className="h-full w-full transition duration-500 group-hover:scale-105">
-          <ProjectThumb project={p} />
-        </div>
-      </div>
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-bold text-slate-900">{p.title}</h3>
-        <p className="mt-1.5 flex-1 text-sm leading-relaxed text-slate-500">{p.short}</p>
-        <div className="mt-4 flex flex-wrap gap-1.5">
-          {p.tech.slice(0, 4).map((t) => (
-            <span key={t} className="inline-flex items-center gap-1 rounded-md bg-slate-50 px-2 py-1 text-[11px] font-medium text-slate-600">
-              <TechIcon name={t} size={11} /> {t}
+    <div
+      className="fade-up group grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/10 lg:grid-cols-2"
+      style={{ animationDelay: `${i * 80}ms` }}
+    >
+      {/* KIRI */}
+      <div className="flex flex-col justify-center bg-[#fbfaf8] p-7 sm:p-10">
+        <h3 className="text-2xl leading-tight font-extrabold tracking-tight text-slate-900 sm:text-3xl">{p.title}</h3>
+        <p className="mt-4 text-[15px] leading-relaxed text-slate-600">{p.short}</p>
+
+        <div className="mt-6 flex flex-wrap gap-2">
+          {tags.map((t) => (
+            <span key={t} className="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-semibold tracking-[0.15em] text-slate-700 uppercase">
+              {t}
             </span>
           ))}
         </div>
+
+        <dl className="mt-6 space-y-1.5 text-sm">
+          {stack.map((row) => (
+            <div key={row.label} className="flex flex-wrap gap-x-2">
+              <dt className="font-semibold text-slate-900">{row.label}:</dt>
+              <dd className="text-slate-600">{row.items.join(" · ")}</dd>
+            </div>
+          ))}
+        </dl>
+
         <a
           href={`#/project/${p.slug}`}
-          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-lg bg-slate-900 px-3.5 py-2 text-xs font-semibold text-white transition hover:bg-blue-600"
+          className="mt-7 inline-flex w-fit items-center gap-1.5 rounded-xl border border-white bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700"
         >
-          Details <FiArrowRight />
+          View Details <FiArrowRight className="transition group-hover:translate-x-0.5" />
         </a>
+      </div>
+
+      {/* KANAN */}
+      <div className="relative min-h-[320px] overflow-hidden bg-[#2c3e5f]">
+        <div className="absolute inset-0 transition duration-700 group-hover:scale-105">
+          {p.image ? (
+            <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover object-right" />
+          ) : (
+            <ProjectThumb project={p} />
+          )}
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1f2d47]/95 via-[#2c3e5f]/75 to-[#2c3e5f]/10" />
+        <div className="relative flex h-full max-w-sm flex-col justify-center p-7 text-white sm:p-10">
+          {hl.label && <div className="text-xs font-bold tracking-[0.3em] text-[#c8d6ec] uppercase">{hl.label}</div>}
+          <div className="mt-3 text-3xl leading-tight font-extrabold sm:text-4xl">{hl.title}</div>
+          <p className="mt-4 text-[15px] leading-relaxed text-white/85">{hl.text}</p>
+        </div>
       </div>
     </div>
   );
@@ -125,7 +157,7 @@ export default function Portfolio() {
         <SectionTitle sub="A collection of my projects, certificates, achievements, and the technologies I use.">Portfolio</SectionTitle>
 
         <Reveal className="mb-10 flex justify-center">
-          <div className="flex flex-wrap justify-center gap-1 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
+          <div className="glass flex flex-wrap justify-center gap-1 rounded-2xl border border-slate-200 p-1.5 shadow-sm">
             {TABS.map((t) => (
               <button
                 key={t.id}
@@ -142,7 +174,7 @@ export default function Portfolio() {
 
         <div key={tab} className="min-h-[300px]">
           {tab === "projects" && (
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6">
               {projects.map((p, i) => (
                 <ProjectCard key={p.slug} p={p} i={i} />
               ))}

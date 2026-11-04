@@ -19,28 +19,52 @@ export const profile = {
   ],
   photo: "/images/profile.webp",
   nim: "", // isi kalau mau NIM tampil di ID card, contoh: "4232xxxx"
-  email: "emailkamu@gmail.com",
+  email: "kennedipane1@gmail.com", // tujuan form "Send Message"
   location: "Toba, North Sumatra, Indonesia",
-  cvUrl: "/cv.pdf", // taruh file CV kamu di folder public dengan nama cv.pdf
+  cvUrl: "/CV_Kennedi_Pane.pdf", // file ada di folder public/CV_Kennedi_Pane.pdf
 };
 
 export const socials = [
   { name: "Instagram", handle: "@kennediii_pane", url: "https://www.instagram.com/kennediii_pane/", icon: "instagram" },
   { name: "GitHub", handle: "@kennedipane30", url: "https://github.com/kennedipane30", icon: "github" },
   { name: "LinkedIn", handle: "Kennedi Pane", url: "https://www.linkedin.com/in/kennedi-pane/", icon: "linkedin" },
-]
+];
 
 export const education = [
   {
+    level: "University",
     school: "Institut Teknologi Del",
     major: "Diploma (D3) in Information Technology",
+    location: "Laguboti, Toba, North Sumatra",
     period: "2024 – 2027",
+    status: "Ongoing",
     logo: "", // contoh: "/images/logo-itdel.png"
   },
   {
+    level: "Senior High School",
     school: "SMA Negeri 1 Habinsaran",
-    major: "Science Major",
+    major: "Science Major (IPA)",
+    location: "Habinsaran, Toba, North Sumatra",
     period: "2021 – 2024",
+    status: "Graduated",
+    logo: "",
+  },
+  {
+    level: "Junior High School",
+    school: "SMP Negeri 1 Habinsaran",
+    major: "",
+    location: "Habinsaran, Toba, North Sumatra",
+    period: "2018 – 2021",
+    status: "Graduated",
+    logo: "",
+  },
+  {
+    level: "Elementary School",
+    school: "SD Negeri 177069 Parsoburan Barat",
+    major: "",
+    location: "Parsoburan Barat, Habinsaran, Toba",
+    period: "2012 – 2018",
+    status: "Graduated",
     logo: "",
   },
 ];
@@ -70,6 +94,41 @@ export const experience = [
 
 export const projects = [
   {
+    slug: "spekta-academy",
+    title: "Spekta Academy Learning Management System",
+    short:
+      "Web and mobile tutoring platform for Spekta Academy Balige, with a web portal for admins and teachers and a mobile app for students.",
+    description:
+      "Web and mobile tutoring platform for Spekta Academy Balige. Admins and teachers work through a web portal, while students learn through a mobile app. Built as a team with a microservice architecture, so every student activity, from learning materials to tryout scores, is recorded in detail.",
+    image: "/images/project-spekta.png",
+        accent: "#5b7ab0",
+    // tag peran (tampil huruf besar)
+    tags: ["Backend Development", "Microservices", "Web & Mobile App"],
+    // baris tech stack
+    stack: [
+      { label: "Languages", items: ["PHP", "Go", "Dart"] },
+      { label: "Frameworks", items: ["Laravel", "Flutter"] },
+      { label: "Database", items: ["PostgreSQL"] },
+    ],
+    // teks di sisi kanan card
+    highlight: {
+      label: "Final Project 2",
+      title: "Spekta Academy LMS",
+      text: "Built as a team with a microservice architecture. Every student activity, from learning materials to tryout scores, is recorded in detail.",
+    },
+    tech: ["Laravel", "PHP", "Golang", "Flutter", "Dart", "PostgreSQL"],
+    role: "Backend & Microservice Developer",
+    year: "2026",
+    demo: "#",
+    repo: "#",
+    features: [
+      "Admin web: students, teachers, schedules, grades, materials, tryouts",
+      "Teacher web: attendance, material upload, exercises & tryout questions",
+      "Student mobile app: materials, exercises, tryouts, tutor, reports",
+      "Detailed tracking of every student learning activity",
+    ],
+  },
+  {
     slug: "sistem-informasi-desa",
     title: "Village Information System",
     short: "A village profile and services website for information, news, and resident data.",
@@ -98,21 +157,6 @@ export const projects = [
     demo: "#",
     repo: "#",
     features: ["Role-based login", "Offline mode", "Data synchronization", "Growth charts"],
-  },
-  {
-    slug: "spekta-academy",
-    title: "Spekta Academy",
-    short: "A web & mobile system for a tutoring center: schedules, students, and payments.",
-    description:
-      "A platform for a tutoring center that manages student data, class schedules, attendance, and payment information, available on web and mobile. (Dummy description.)",
-    image: "",
-    accent: "#3b527c",
-    tech: ["Laravel", "Flutter", "Tailwind CSS", "MySQL"],
-    role: "Web & Mobile Developer",
-    year: "2026",
-    demo: "#",
-    repo: "#",
-    features: ["Student management", "Schedules & attendance", "Payment info", "Mobile app"],
   },
   {
     slug: "game-edukasi-lokal",
