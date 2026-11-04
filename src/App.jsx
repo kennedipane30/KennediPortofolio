@@ -20,16 +20,22 @@ function Background() {
 }
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
+  // "loading" -> animasi ketik, "entering" -> transisi gradasi, "done" -> selesai
+  const [phase, setPhase] = useState("loading");
   const route = useHashRoute();
-  const done = useCallback(() => setLoading(false), []);
+  const leave = useCallback(() => setPhase("entering"), []);
+  const done = useCallback(() => setPhase("done"), []);
+  // class animasi dilepas setelah selesai, supaya pop-up (position: fixed) tetap normal
+  const enterClass = phase === "loading" ? "opacity-0" : phase === "entering" ? "page-enter" : "";
 
   return (
     <>
-      {loading && <Loader onDone={done} />}
+      {phase !== "done" && <Loader onLeave={leave} onDone={done} />}
       <Background />
-      <Navbar isDetail={route.page === "project"} />
-      <main>
+      <div className={phase === "loading" ? "opacity-0" : phase === "entering" ? "soft-fade" : ""}>
+        <Navbar isDetail={route.page === "project"} />
+      </div>
+      <main className={enterClass}>
         {route.page === "project" ? (
           <ProjectDetail slug={route.slug} />
         ) : (
@@ -41,7 +47,9 @@ export default function App() {
           </>
         )}
       </main>
-      <Footer />
+      <div className={enterClass}>
+        <Footer />
+      </div>
     </>
   );
 }

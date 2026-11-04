@@ -7,22 +7,21 @@
 // ============================================================
 
 // Teknologi andalan (diberi label "Main Stack" di tab Tech Stack)
-export const mainStack = ["Golang", "Laravel", "Flutter", "PostgreSQL"];
-
+export const mainStack = ["Golang", "Laravel", "Flutter", "PostgreSQL", "Tableau", "GitHub"];
 export const profile = {
   name: "Kennedi Pane",
   shortName: "Kennedi",
   role: "Web & Mobile Developer",
-  typing: ["Web & Mobile Developer", "Laravel & Golang", "Flutter Enthusiast", "UI/UX Explorer"],
+  stackLine: "Laravel · Golang · Flutter · REST API",
   heroDesc:
-    "What started as curiosity has become a passion. I love building web and mobile apps that are clean, fast, and enjoyable to use — from designs in Figma all the way to the backend and database.",
+    "I turn ideas into fast, reliable digital products, from responsive web apps and cross-platform mobile apps to scalable backends and well-structured databases. I build software that solves real problems. Have an idea or an opportunity in mind? Let's build something people love to use.",
   aboutDesc: [
-    "I am an Information Technology diploma student focused on web and mobile application development. I enjoy turning ideas into useful digital products.",
-    "With Laravel, Golang, and Flutter, I build information systems that are responsive, well-structured, and easy to use.",
+    "I'm an Information Technology student at Institut Teknologi Del who loves turning ideas into real, working products. I build responsive web applications with Laravel, React, and Tailwind CSS, cross-platform mobile apps with Flutter, and reliable backend services and REST APIs with Golang.",
+    "Beyond development, I work with data to uncover insights, using Python and Machine Learning to build predictive models and Power BI and Tableau to turn numbers into clear, meaningful dashboards. I care about clean architecture, well-structured data, and software that people genuinely enjoy using.",
   ],
   photo: "/images/profile.webp",
-  nim: "", // isi kalau mau NIM tampil di ID card, contoh: "4232xxxx"
-  email: "kennedipane1@gmail.com", // tujuan form "Send Message"
+  nim: "42324003", // isi kalau mau NIM tampil di ID card, contoh: "4232xxxx"
+  email: "kennedipane017@gmail.com", // tujuan form "Send Message"
   location: "Toba, North Sumatra, Indonesia",
   cvUrl: "/CV_Kennedi_Pane.pdf", // file ada di folder public/CV_Kennedi_Pane.pdf
 };

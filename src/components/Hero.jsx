@@ -21,7 +21,7 @@ export default function Hero() {
             <span className="text-slate-900">My Portfolio</span>
           </h1>
           <p className="mt-4 text-lg font-bold text-blue-600 sm:text-xl">{profile.role}</p>
-          <p className="mt-1 text-sm font-semibold tracking-wide text-slate-500">Laravel · Golang · Flutter</p>
+          <p className="mt-1 text-sm font-semibold tracking-wide text-slate-500">{profile.stackLine}</p>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600">{profile.heroDesc}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -40,11 +40,10 @@ export default function Hero() {
             </a>
           </div>
         </div>
-
       </div>
 
       {/* Lanyard: di HP tampil di bawah teks, di laptop menggantung dari atas sisi kanan */}
-      <Lanyard className="mt-10 h-[640px] w-full lg:absolute lg:inset-y-0 lg:right-[4%] lg:mt-0 lg:h-auto lg:w-[42%] xl:right-[8%] xl:w-[38%]" />
+      <Lanyard className="mt-10 h-[680px] w-full lg:absolute lg:inset-y-0 lg:right-[4%] lg:mt-0 lg:h-auto lg:w-[42%] xl:right-[8%] xl:w-[38%]" />
     </section>
   );
 }

@@ -132,6 +132,31 @@ body {
   background: linear-gradient(90deg, rgba(91, 122, 176, 0.5), transparent);
   animation: shoot 7s linear infinite;
 }
+
+/* transisi masuk ke halaman Home setelah loading */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+.page-enter {
+  animation: page-enter 1.15s cubic-bezier(0.22, 0.8, 0.24, 1) 0.15s both;
+}
+@keyframes soft-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.soft-fade {
+  animation: soft-fade 0.95s ease 0.35s both;
+}
+
 /* efek "ditekan" untuk semua tombol & link */
 button,
 a[href] {
@@ -142,6 +167,7 @@ a[href]:active {
   transform: scale(0.96);
   transition: transform 0.1s ease;
 }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }

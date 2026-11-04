@@ -222,7 +222,7 @@ export default function Lanyard({ className = "" }) {
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
-        className="pointer-events-auto absolute top-0 left-0 w-[250px] cursor-grab touch-none will-change-transform active:cursor-grabbing sm:w-[300px]"
+        className="pointer-events-auto absolute top-0 left-0 w-[270px] cursor-grab touch-none will-change-transform active:cursor-grabbing sm:w-[330px]"
         style={{ transform: "translate(-9999px,0)" }}
       >
         {/* klip besi */}
@@ -238,18 +238,13 @@ export default function Lanyard({ className = "" }) {
             <div className="pointer-events-none absolute -right-6 -bottom-8 h-24 w-24 rounded-full bg-white/15" />
           </div>
           <div className="relative mt-3 flex gap-3">
-            <Avatar src={profile.photo} name={profile.name} className="h-[132px] w-[102px] rounded-lg sm:h-[160px] sm:w-[124px]" draggable={false} />
-            <div className="flex min-w-0 flex-1 flex-col justify-between py-0.5">
+            <Avatar src={profile.photo} name={profile.name} className="h-[144px] w-[110px] rounded-lg sm:h-[176px] sm:w-[136px]" draggable={false} />
+            <div className="flex min-w-0 flex-1 flex-col justify-center py-0.5">
               <div>
                 <div className="text-[10px] sm:text-[11px] font-semibold tracking-wider text-slate-400">NAME</div>
-                <div className="text-base leading-tight font-bold text-slate-900 sm:text-lg">{profile.name}</div>
-                <div className="mt-1.5 text-[10px] sm:text-[11px] font-semibold tracking-wider text-slate-400">ROLE</div>
-                <div className="text-xs leading-tight font-semibold text-slate-700 sm:text-sm">{profile.role}</div>
-              </div>
-              <div className="flex h-6 items-end gap-[2px]" aria-hidden="true">
-                {[3, 1, 2, 1, 3, 2, 1, 1, 3, 1, 2, 3, 1, 2, 1, 3, 2].map((w, i) => (
-                  <span key={i} className="h-full bg-slate-800" style={{ width: w }} />
-                ))}
+                <div className="text-lg leading-tight font-bold text-slate-900 sm:text-xl">{profile.name}</div>
+                <div className="mt-3 text-[10px] sm:text-[11px] font-semibold tracking-wider text-slate-400">ROLE</div>
+                <div className="text-sm leading-tight font-semibold text-slate-700 sm:text-base">{profile.role}</div>
               </div>
             </div>
           </div>

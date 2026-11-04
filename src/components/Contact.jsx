@@ -226,7 +226,7 @@ export default function Contact() {
                 )}
                 <p className="mt-1 text-center text-[11px] text-slate-400">Maximum file size 2 MB</p>
               </div>
-              <button className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 py-3 text-sm font-semibold text-white transition hover:bg-blue-600">
+              <button className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-600/25 transition hover:bg-blue-700">
                 <FiSend /> Post Comment
               </button>
             </form>
