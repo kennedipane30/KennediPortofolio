@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FiSend, FiUser, FiMail, FiMessageSquare, FiImage, FiMessageCircle, FiChevronRight, FiX, FiCheck } from "react-icons/fi";
 import Reveal from "./Reveal";
 import SocialIcon from "./SocialIcon";
@@ -24,9 +24,62 @@ function saveComments(list) {
 function timeAgo(iso) {
   const d = (Date.now() - new Date(iso).getTime()) / 1000;
   if (d < 60) return "just now";
-  if (d < 3600) return `${Math.floor(d / 60)} min ago`;
-  if (d < 86400) return `${Math.floor(d / 3600)} hours ago`;
-  return `${Math.floor(d / 86400)} days ago`;
+  const n = (v) => Math.floor(v);
+  if (d < 3600) return `${n(d / 60)} min ago`;
+  if (d < 86400) return n(d / 3600) === 1 ? "1 hour ago" : `${n(d / 3600)} hours ago`;
+  return n(d / 86400) === 1 ? "1 day ago" : `${n(d / 86400)} days ago`;
+}
+
+// Jumlah komentar terbaru yang tampil langsung di halaman
+const PREVIEW_COUNT = 2;
+
+function CommentItem({ c }) {
+  return (
+    <li className="fade-up flex gap-3 rounded-2xl bg-slate-50 p-3">
+      <Avatar src={c.photo} name={c.name || "?"} className="h-9 w-9 shrink-0 rounded-full" />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline justify-between gap-2">
+          <span className="truncate text-sm font-bold text-slate-900">{c.name}</span>
+          <span className="shrink-0 text-[11px] text-slate-400">{timeAgo(c.date)}</span>
+        </div>
+        <p className="mt-0.5 text-sm break-words text-slate-600">{c.text}</p>
+      </div>
+    </li>
+  );
+}
+
+// Pop-up berisi semua komentar (bisa di-scroll)
+function CommentsModal({ comments, onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-900/40 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="fade-up flex max-h-[80vh] w-full max-w-lg flex-col overflow-hidden rounded-3xl bg-white shadow-2xl" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+          <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900">
+            <FiMessageCircle className="text-blue-600" /> All Comments
+            <span className="text-sm font-semibold text-slate-400">({comments.length})</span>
+          </h3>
+          <button onClick={onClose} aria-label="Close" className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200">
+            <FiX />
+          </button>
+        </div>
+        <ul className="space-y-3 overflow-y-auto p-5">
+          {comments.map((c, i) => (
+            <CommentItem key={c.date + i} c={c} />
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 }
 
 function Field({ icon: Icon, label, ...props }) {
@@ -49,6 +102,7 @@ export default function Contact() {
   const [toast, setToast] = useState("");
   const [comments, setComments] = useState(loadComments);
   const [cPhoto, setCPhoto] = useState("");
+  const [showAll, setShowAll] = useState(false);
   const fileRef = useRef(null);
 
   const flash = (msg) => {
@@ -110,9 +164,9 @@ export default function Contact() {
                 href={s.url}
                 target="_blank"
                 rel="noreferrer"
-                className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 transition hover:border-blue-200 hover:shadow-md hover:shadow-blue-900/5"
+                className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-3 transition duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/10"
               >
-                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-50 text-slate-700 group-hover:bg-blue-50 group-hover:text-blue-600">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-600/25 transition duration-300 group-hover:-translate-y-0.5 group-hover:scale-105 group-hover:bg-blue-700">
                   <SocialIcon name={s.icon} />
                 </span>
                 <span className="min-w-0 flex-1">
@@ -177,26 +231,28 @@ export default function Contact() {
               </button>
             </form>
 
-            <ul className="mt-6 max-h-96 space-y-3 overflow-y-auto pr-1">
+            <ul className="mt-6 space-y-3">
               {comments.length === 0 && (
                 <li className="rounded-2xl bg-slate-50 p-4 text-center text-sm text-slate-400">No comments yet. Be the first to leave one!</li>
               )}
-              {comments.map((c, i) => (
-                <li key={c.date + i} className="fade-up flex gap-3 rounded-2xl bg-slate-50 p-3">
-                  <Avatar src={c.photo} name={c.name || "?"} className="h-9 w-9 shrink-0 rounded-full" />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <span className="truncate text-sm font-bold text-slate-900">{c.name}</span>
-                      <span className="shrink-0 text-[11px] text-slate-400">{timeAgo(c.date)}</span>
-                    </div>
-                    <p className="mt-0.5 text-sm break-words text-slate-600">{c.text}</p>
-                  </div>
-                </li>
+              {comments.slice(0, PREVIEW_COUNT).map((c, i) => (
+                <CommentItem key={c.date + i} c={c} />
               ))}
             </ul>
+
+            {comments.length > PREVIEW_COUNT && (
+              <button
+                onClick={() => setShowAll(true)}
+                className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-slate-200 py-2.5 text-sm font-semibold text-blue-600 transition hover:border-blue-200 hover:bg-blue-50"
+              >
+                View all comments ({comments.length}) <FiChevronRight />
+              </button>
+            )}
           </Reveal>
         </div>
       </div>
+
+      {showAll && <CommentsModal comments={comments} onClose={() => setShowAll(false)} />}
 
       {toast && (
         <div className="fade-up fixed bottom-6 left-1/2 z-[90] flex -translate-x-1/2 items-center gap-2 rounded-xl bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-xl">

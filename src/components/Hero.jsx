@@ -1,33 +1,6 @@
-import { useEffect, useState } from "react";
 import { FiArrowRight, FiDownload } from "react-icons/fi";
 import Lanyard from "./Lanyard";
 import { profile } from "../data/portfolio";
-
-function Typing({ words }) {
-  const [i, setI] = useState(0);
-  const [text, setText] = useState("");
-  const [del, setDel] = useState(false);
-
-  useEffect(() => {
-    const word = words[i % words.length];
-    let t;
-    if (!del && text === word) t = setTimeout(() => setDel(true), 1600);
-    else if (del && text === "") {
-      setDel(false);
-      setI((n) => n + 1);
-    } else {
-      t = setTimeout(() => setText(del ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1)), del ? 40 : 85);
-    }
-    return () => clearTimeout(t);
-  }, [text, del, i, words]);
-
-  return (
-    <span>
-      {text}
-      <span className="caret" />
-    </span>
-  );
-}
 
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -42,17 +15,13 @@ export default function Hero() {
     <section id="home" className="relative flex min-h-screen flex-col pt-28 pb-12 lg:flex-row lg:items-center lg:pt-20">
       <div className="relative z-10 mx-auto w-full max-w-6xl px-5">
         <div className="fade-up max-w-xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Open to internships & collaboration
-          </span>
           <h1 className="mt-5 text-5xl leading-[1.05] font-extrabold tracking-tight sm:text-6xl lg:text-7xl">
             <span className="text-gradient">Welcome to</span>
             <br />
             <span className="text-slate-900">My Portfolio</span>
           </h1>
-          <p className="mt-4 h-7 text-lg font-bold text-blue-600 sm:text-xl">
-            <Typing words={profile.typing} />
-          </p>
+          <p className="mt-4 text-lg font-bold text-blue-600 sm:text-xl">{profile.role}</p>
+          <p className="mt-1 text-sm font-semibold tracking-wide text-slate-500">Laravel · Golang · Flutter</p>
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600">{profile.heroDesc}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">
