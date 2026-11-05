@@ -88,8 +88,8 @@ export const experience = [
     period: "2025",
   },
   {
-    title: "Student Mentor (Abang Asuh)",
-    place: "Institut Teknologi Del",
+    title: "Vice Head of Facilities & Infrastructure",
+    place: "HIMATIF — Information Technology Student Association",
     period: "2025 – 2026",
   },
 ];
@@ -176,6 +176,13 @@ export const certificates = [
     image: "/images/sertifikat-oracle-ai-database.webp",
     url: "",
   },
+    {
+    title: "Oracle AI Foundations Certified Foundations Associate",
+    issuer: "Oracle University",
+    date: "10 Sep 2026",
+    image: "/images/sertifikat-oracle-ai-database.webp",
+    url: "",
+  },
   {
     title: "Learn the Basics of Structured Query Language (SQL)",
     issuer: "Dicoding Indonesia",
@@ -198,13 +205,13 @@ export const achievements = [
     title: "Student Leadership Program 2025/2026",
     issuer: "Institut Teknologi Del",
     date: "16 Oct 2026",
-    image: "/images/sertifikat-slp.webp",
+    image: "/images/sertifikat-slp.jpeg",
   },
   {
     title: "Research Assistant — Local-Content Educational Game",
     issuer: "LPPM Institut Teknologi Del",
     date: "27 Nov 2025",
-    image: "/images/sertifikat-asisten-penelitian.webp",
+    image: "/images/sertifikat-asisten-penelitian.jpeg",
   },
 ];
 
