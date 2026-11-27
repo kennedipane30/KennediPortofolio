@@ -172,28 +172,28 @@ export const certificates = [
   {
     title: "AWS Certified Developer – Associate",
     issuer: "Amazon Web Services",
-    date: "Nov 2026",
+    date: "25 Nov 2026",
     image: "/images/sertifikat-aws-developer.webp",
-    url: "", // isi dengan link verifikasi Credly kalau ada
+    url: "https://aws.amazon.com/verification",
   },
   {
     title: "Ethical Hacker For Dummies",
-    issuer: "Digital Talent Scholarship",
-    date: "2026", // sesuaikan dengan tanggal di sertifikat, contoh: "28 Nov 2026"
+    issuer: "Komdigi – Digital Talent Scholarship",
+    date: "10 Nov 2026",
     image: "/images/sertifikat-ethical-hacker.webp",
     url: "",
   },
   {
     title: "Huawei AI for Everyone",
-    issuer: "Digital Talent Scholarship",
-    date: "2026", // sesuaikan dengan tanggal di sertifikat
+    issuer: "Komdigi – Digital Talent Scholarship",
+    date: "10 Nov 2026",
     image: "/images/sertifikat-huawei-ai-for-everyone.webp",
     url: "",
   },
   {
-    title: "Fundamental AI",
-    issuer: "Digital Talent Scholarship",
-    date: "2026", // sesuaikan judul, penerbit & tanggal dengan sertifikat
+    title: "Fundamental of Computer Operator Technician",
+    issuer: "Komdigi – Digital Talent Scholarship",
+    date: "26 Nov 2026",
     image: "/images/sertifikat-fundamental-ai.webp",
     url: "",
   },
