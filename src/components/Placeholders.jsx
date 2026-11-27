@@ -1,4 +1,5 @@
 // Gambar pengganti otomatis saat data image masih kosong
+import { useEffect, useState } from "react";
 
 export function Avatar({ src, name, className = "", ...rest }) {
   if (src)
@@ -73,12 +74,17 @@ export function ProjectThumb({ project, className = "" }) {
 
 // Mockup sertifikat
 export function CertThumb({ item, className = "", contain = false }) {
-  if (item.image) {
+  // Kalau file gambar belum ada / gagal dimuat, tampilkan desain sertifikat bawaan
+  const [failed, setFailed] = useState(false);
+  useEffect(() => setFailed(false), [item.image]);
+
+  if (item.image && !failed) {
     return (
       <img
         src={item.image}
         alt={item.title}
         loading="lazy"
+        onError={() => setFailed(true)}
         className={`h-full w-full bg-slate-50 ${contain ? "object-contain" : "object-cover object-center"} ${className}`}
       />
     );

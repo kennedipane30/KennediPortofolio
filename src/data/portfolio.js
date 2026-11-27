@@ -170,6 +170,34 @@ export const projects = [
 // SERTIFIKAT
 export const certificates = [
   {
+    title: "AWS Certified Developer – Associate",
+    issuer: "Amazon Web Services",
+    date: "Nov 2026",
+    image: "/images/sertifikat-aws-developer.webp",
+    url: "", // isi dengan link verifikasi Credly kalau ada
+  },
+  {
+    title: "Ethical Hacker For Dummies",
+    issuer: "Digital Talent Scholarship",
+    date: "2026", // sesuaikan dengan tanggal di sertifikat, contoh: "28 Nov 2026"
+    image: "/images/sertifikat-ethical-hacker.webp",
+    url: "",
+  },
+  {
+    title: "Huawei AI for Everyone",
+    issuer: "Digital Talent Scholarship",
+    date: "2026", // sesuaikan dengan tanggal di sertifikat
+    image: "/images/sertifikat-huawei-ai-for-everyone.webp",
+    url: "",
+  },
+  {
+    title: "Fundamental AI",
+    issuer: "Digital Talent Scholarship",
+    date: "2026", // sesuaikan judul, penerbit & tanggal dengan sertifikat
+    image: "/images/sertifikat-fundamental-ai.webp",
+    url: "",
+  },
+  {
     title: "Oracle AI Database Certified Foundations Associate",
     issuer: "Oracle University",
     date: "10 Sep 2026",
