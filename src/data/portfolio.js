@@ -102,7 +102,7 @@ export const projects = [
       "Web and mobile tutoring platform for Spekta Academy Balige, with a web portal for admins and teachers and a mobile app for students.",
     description:
       "Web and mobile tutoring platform for Spekta Academy Balige. Admins and teachers work through a web portal, while students learn through a mobile app. Built as a team with a microservice architecture, so every student activity, from learning materials to tryout scores, is recorded in detail.",
-    image: "/images/project-spekta.png",
+    image: "/images/project-spekta.webp",
     accent: "#5b7ab0",
     // tag peran (tampil huruf besar)
     tags: ["Backend Development", "Microservices", "Web & Mobile App"],
@@ -137,7 +137,7 @@ export const projects = [
       "Mobile application for monitoring toddler growth and development at Posyandu Silimbat, Sitoluama, and Aek Bolon, with role-based access for secretaries, health cadres, midwives, and parents.",
     description:
       "Mobile application for monitoring toddler growth and development at Posyandu Silimbat, Sitoluama, and Aek Bolon, with role-based access for secretaries, health cadres, midwives, and parents. Built as a team for our final project. Parents register and check in with a QR code, cadres record measurements, and midwives log immunizations based on the Indonesian Ministry of Health schedule. Nutritional status is calculated automatically using WHO growth standards (Permenkes No. 2/2020).",
-    image: "/images/project-posyandu.png", // simpan gambar di public/images/project-posyandu.png
+    image: "/images/project-posyandu.webp", // simpan gambar di public/images/project-posyandu.png
     accent: "#4a6699",
     tags: ["Backend Development", "Mobile App", "Offline-First"],
     stack: [
@@ -233,13 +233,13 @@ export const achievements = [
     title: "Student Leadership Program 2025/2026",
     issuer: "Institut Teknologi Del",
     date: "16 Oct 2026",
-    image: "/images/sertifikat-slp.jpeg",
+    image: "/images/sertifikat-slp.webp",
   },
   {
     title: "Research Assistant — Local-Content Educational Game",
     issuer: "LPPM Institut Teknologi Del",
     date: "27 Nov 2025",
-    image: "/images/sertifikat-asisten-penelitian.jpeg",
+    image: "/images/sertifikat-asisten-penelitian.webp",
   },
 ];
 
