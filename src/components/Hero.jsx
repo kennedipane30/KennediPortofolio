@@ -21,7 +21,9 @@ export default function Hero() {
             <span className="text-slate-900">My Portfolio</span>
           </h1>
           <p className="mt-4 text-lg font-bold text-blue-600 sm:text-xl">{profile.role}</p>
-          <p className="mt-1 text-sm font-semibold tracking-wide text-slate-500">{profile.stackLine}</p>
+          {profile.stackLine && (
+            <p className="mt-1 text-sm font-semibold tracking-wide text-slate-500">{profile.stackLine}</p>
+          )}
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-600">{profile.heroDesc}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">
