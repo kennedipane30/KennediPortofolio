@@ -11,7 +11,7 @@ export const mainStack = ["Golang", "Laravel", "Flutter", "PostgreSQL", "Tableau
 export const profile = {
   name: "Kennedi Pane",
   shortName: "Kennedi",
-  role: "SoftWare Enginer",
+  role: "Software Engineer",
   stackLine: "Laravel · Golang · Flutter · REST API",
   heroDesc:
     "I turn ideas into fast, reliable digital products, from responsive web apps and cross-platform mobile apps to scalable backends and well-structured databases. I build software that solves real problems. Have an idea or an opportunity in mind? Let's build something people love to use.",
